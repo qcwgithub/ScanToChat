@@ -1,0 +1,11 @@
+.vs/
+ScanToChat/ScanToChat.Droid/obj/
+ScanToChat/ScanToChat.iOS/obj/
+ScanToChat/ScanToChat.macOS/obj/
+ScanToChat/ScanToChat.Shared/obj/
+ScanToChat/ScanToChat.Skia.Gtk/obj/
+ScanToChat/ScanToChat.Skia.Tizen/obj/
+ScanToChat/ScanToChat.Skia.Wpf/obj/
+ScanToChat/ScanToChat.Skia.Wpf.Host/obj/
+ScanToChat/ScanToChat.Wasm/obj/
+ScanToChat/ScanToChat.UWP/obj/
