@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>055415d2-1b52-4b40-8aca-e93c3efd5e6e</ProjectGuid>
+    <ProjectGuid>{055415D2-1B52-4B40-8ACA-E93C3EFD5E6E}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>ScanToChat</RootNamespace>
@@ -113,6 +113,9 @@
     <BundleResource Include="Resources\Fonts\uno-fluentui-assets.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Refractored.MvvmHelpers">
+      <Version>1.6.2</Version>
+    </PackageReference>
     <PackageReference Include="Uno.UI" Version="3.9.7" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="3.9.7" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
@@ -151,11 +154,7 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Media" Visible="false" />
-    <Folder Include="Media\AppIcons" Visible="false" />
-    <Folder Include="Media\LaunchImages" Visible="false" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="..\ScanToChat.Shared\ScanToChat.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

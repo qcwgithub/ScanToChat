@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>a4f015be-7a3f-4992-9e61-909bfa23fa86</ProjectGuid>
+    <ProjectGuid>{A4F015BE-7A3F-4992-9E61-909BFA23FA86}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>ScanToChat.macOS</RootNamespace>
@@ -69,6 +69,9 @@
     <Reference Include="System.Memory" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Refractored.MvvmHelpers">
+      <Version>1.6.2</Version>
+    </PackageReference>
     <PackageReference Include="Uno.UI" Version="3.9.7" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="3.9.7" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
@@ -91,11 +94,7 @@
     <ImageAsset Include="Assets.xcassets\unologo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\unologo.imageset\unoplatform.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Fonts\" />
-    <Folder Include="Assets.xcassets\unologo.imageset\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
