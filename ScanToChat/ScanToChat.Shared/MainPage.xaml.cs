@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ScanToChat.Models;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,6 +24,7 @@ namespace ScanToChat
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Grid grid;
         public static readonly DependencyProperty IssueItemProperty =
             DependencyProperty.Register(nameof(Item), typeof(IssueItem), typeof(MainPage), new PropertyMetadata(default(IssueItem)));
 
@@ -101,5 +103,45 @@ We would like to have a visual indicator for the type of issue as well as someth
                 StartedAt = new DateTimeOffset(2019, 04, 30, 08, 0, 0, TimeSpan.FromHours(-8))
             };
         }
+        // Sets the time when we Complete or Start an issue.
+        private void StatusPicker_SelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            switch (Item.Status)
+            {
+                case IssueStatus.Removed:
+                case IssueStatus.Done:
+                    if (Item.CompletedAt is null)
+                        Item.CompletedAt = DateTimeOffset.Now.ToLocalTime();
+                    break;
+                case IssueStatus.WIP:
+                    if (Item.StartedAt is null)
+                        Item.StartedAt = DateTimeOffset.Now.ToLocalTime();
+                    break;
+                default:
+                    Item.StartedAt = null;
+                    Item.CompletedAt = null;
+                    break;
+            }
+        }
+        private void IssueType_SelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            var color = Colors.Red;
+            switch (IssueTypeBox.SelectedItem)
+            {
+                case IssueType.Feature:
+                    color = Colors.Green;
+                    break;
+                case IssueType.Issue:
+                    color = Colors.Blue;
+                    break;
+                case IssueType.Task:
+                    color = Colors.Yellow;
+                    break;
+            }
+            IssueTypeIndicator.Background = new SolidColorBrush(color);
+        }
+        // Provides the conversion for dates in the XAML through x:Bind
+        public string FormatDate(string header, DateTimeOffset? dateTime)
+            => $"{header} {dateTime:MMM dd, yyyy hh:mm tt}";
     }
 }

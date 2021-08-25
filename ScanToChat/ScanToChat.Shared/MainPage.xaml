@@ -12,9 +12,7 @@
         <converters:StringFormatConverter x:Key="StringFormatConverter" />
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--><TextBlock Text="Hello, world!" Margin="20" FontSize="30" /><-->
-        
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -34,7 +32,45 @@
             PlaceholderText="Enter the Issue Type"
             HorizontalAlignment="Stretch"
             Margin="10,0,0,0"/>
+
         </StackPanel>
-        
+
+        <TextBox Text="{x:Bind Item.Description,Mode=TwoWay}"
+         Grid.Row="2"
+         AcceptsReturn="True"
+         Header="Description"
+         Height="200"
+         Margin="10,0"
+         PlaceholderText="Enter Text Here" />
+
+        <TextBlock Text="Planning" FontWeight="Bold" FontSize="16" Grid.Row="3" Margin="10,0" />
+
+        <TextBlock Text="Planning" FontWeight="Bold" FontSize="16" Grid.Row="3" Margin="10,0" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="10,0" Spacing="20">
+            <StackPanel Background="LightGray" Padding="20">
+                <TextBlock Text="Effort" FontWeight="Bold" FontSize="16" Margin="10,0" />
+                <TextBox Text="{x:Bind Item.Effort,Mode=TwoWay}"
+               HorizontalTextAlignment="Center"
+               HorizontalAlignment="Center"
+               HorizontalContentAlignment="Center"
+               BorderBrush="Transparent"
+               Background="Transparent"/>
+                <Slider Value="{x:Bind Item.Effort,Mode=TwoWay}" Width="100" Minimum="0" Maximum="15" />
+            </StackPanel>
+            <StackPanel Background="LightGray"
+              Padding="20">
+                <TextBlock Text="Status" FontWeight="Bold" FontSize="16" Margin="10,0" />
+                <ComboBox ItemsSource="{x:Bind StatusList}"
+              SelectedItem="{x:Bind Item.Status}"
+              HorizontalAlignment="Stretch"
+              SelectionChanged="StatusPicker_SelectionChanged" />
+                <TextBlock Text="{x:Bind FormatDate('Started:', Item.StartedAt), Mode=OneWay}" />
+                <TextBlock Text="{x:Bind FormatDate('Completed:', Item.CompletedAt), Mode=OneWay}" />
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock Text="{x:Bind FormatDate('Created:', Item.CreatedAt)}" Grid.Row="5"
+           Margin="10,0"/>
     </Grid>
 </Page>
